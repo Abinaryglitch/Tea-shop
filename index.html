@@ -4,611 +4,121 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Bothina's Tea Shop</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
-
 <style>
 *{box-sizing:border-box}
-:root{
-  --ink:#2d211a;
-  --paper:#fff2d1;
-  --paper2:#ffe4b1;
-  --wood:#5b3827;
-  --wood2:#7c5032;
-  --leaf:#6f9253;
-  --gold:#d8a64d;
-  --rose:#c47b70;
-  --night:#172616;
-}
-body{
-  margin:0;
-  min-height:100vh;
-  font-family:"Quicksand",sans-serif;
-  color:var(--ink);
-  background:
-    radial-gradient(circle at 20% 10%,rgba(255,218,135,.28),transparent 25%),
-    linear-gradient(#18301e,#0e0b08);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  overflow-x:hidden;
-}
-.scene{
-  width:min(1100px,96vw);
-  min-height:720px;
-  margin:18px;
-  border:5px solid #2b1b14;
-  border-radius:30px;
-  position:relative;
-  overflow:hidden;
-  background:
-    radial-gradient(circle at 50% 0%,rgba(255,218,125,.42),transparent 28%),
-    linear-gradient(rgba(255,235,190,.68),rgba(255,235,190,.55)),
-    repeating-linear-gradient(90deg,#765034 0 26px,#67432e 26px 52px);
-  box-shadow:0 26px 80px rgba(0,0,0,.55);
-}
-.scene:before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(circle at 18% 20%,rgba(53,95,53,.6),transparent 18%),
-    radial-gradient(circle at 86% 18%,rgba(63,101,60,.55),transparent 20%),
-    radial-gradient(circle at 70% 78%,rgba(37,61,35,.7),transparent 24%);
-  opacity:.65;
-}
-.lantern{
-  position:absolute;
-  top:18px;
-  width:50px;
-  height:70px;
-  border:4px solid #2b1b14;
-  border-radius:28px 28px 18px 18px;
-  background:radial-gradient(circle,#ffe8a5,#d49b44 72%);
-  box-shadow:0 0 32px rgba(255,218,118,.9);
-  z-index:3;
-  animation:sway 3s ease-in-out infinite alternate;
-}
-.l1{left:95px}.l2{right:115px;animation-delay:.7s}
-.lantern:before{
-  content:"";
-  position:absolute;
-  top:-25px;
-  left:50%;
-  width:4px;
-  height:25px;
-  background:#2b1b14;
-}
-@keyframes sway{to{transform:rotate(3deg)}}
-.sign{
-  position:absolute;
-  top:52px;
-  left:50%;
-  transform:translateX(-50%) rotate(-1deg);
-  z-index:4;
-  background:#6d452d;
-  color:#fff1d1;
-  border:4px solid #2b1b14;
-  border-radius:18px;
-  padding:12px 28px;
-  box-shadow:6px 7px 0 rgba(0,0,0,.22);
-}
-.sign h1{
-  margin:0;
-  font-family:"Gaegu",cursive;
-  font-size:clamp(2.5rem,7vw,5rem);
-  line-height:.8;
-}
-.shelf{
-  position:absolute;
-  right:40px;
-  top:175px;
-  width:360px;
-  min-height:210px;
-  z-index:2;
-  border:5px solid #3a241a;
-  border-radius:18px;
-  background:rgba(89,55,36,.75);
-  padding:16px;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
-}
-.jar{
-  height:70px;
-  border:3px solid #2b1b14;
-  border-radius:16px 16px 24px 24px;
-  background:rgba(255,246,223,.75);
-  display:grid;
-  place-items:center;
-  font-size:2rem;
-  cursor:pointer;
-  transition:.18s;
-}
-.jar:hover{transform:translateY(-5px) rotate(-3deg)}
-.counter{
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:0;
-  height:190px;
-  background:
-    linear-gradient(rgba(88,52,33,.92),rgba(70,41,27,.98)),
-    repeating-linear-gradient(90deg,#70472e 0 28px,#5e3b27 28px 56px);
-  border-top:5px solid #2b1b14;
-  z-index:3;
-}
-.character{
-  position:absolute;
-  left:95px;
-  bottom:100px;
-  width:260px;
-  height:360px;
-  z-index:5;
-  filter:drop-shadow(0 8px 0 rgba(0,0,0,.22));
-}
-.hijab{
-  position:absolute;
-  left:48px;
-  top:8px;
-  width:165px;
-  height:225px;
-  background:#7d807d;
-  border:5px solid #221814;
-  border-radius:82px 82px 48px 48px;
-}
-.face{
-  position:absolute;
-  left:65px;
-  top:48px;
-  width:132px;
-  height:150px;
-  background:#b8795f;
-  border:5px solid #221814;
-  border-radius:48%;
-}
-.curl{
-  position:absolute;
-  left:75px;
-  top:34px;
-  font-family:"Gaegu",cursive;
-  font-size:58px;
-  z-index:6;
-  transform:rotate(-20deg);
-}
-.eye{
-  position:absolute;
-  top:78px;
-  width:14px;
-  height:20px;
-  background:#1e1512;
-  border-radius:50%;
-}
-.eye.left{left:38px}.eye.right{right:38px}
-.blush{
-  position:absolute;
-  top:103px;
-  width:20px;height:10px;
-  background:rgba(196,123,112,.65);
-  border-radius:50%;
-}
-.blush.left{left:22px}.blush.right{right:22px}
-.smile{
-  position:absolute;
-  left:48px;
-  top:116px;
-  width:36px;
-  height:20px;
-  border-bottom:4px solid #1e1512;
-  border-radius:0 0 30px 30px;
-}
-.ring{
-  position:absolute;
-  right:39px;
-  top:101px;
-  color:#ffe39b;
-  font-size:18px;
-}
-.body{
-  position:absolute;
-  left:32px;
-  top:205px;
-  width:195px;
-  height:120px;
-  background:#4f7146;
-  border:5px solid #221814;
-  border-radius:48px 48px 20px 20px;
-}
-.apron{
-  position:absolute;
-  left:85px;
-  top:218px;
-  width:90px;
-  height:115px;
-  background:#efd4a8;
-  border:4px solid #221814;
-  border-radius:18px;
-  display:grid;
-  place-items:center;
-  font-size:2rem;
-}
-.speech{
-  position:absolute;
-  left:320px;
-  top:210px;
-  width:330px;
-  min-height:120px;
-  z-index:6;
-  background:var(--paper);
-  border:4px solid #221814;
-  border-radius:28px;
-  padding:16px 18px;
-  font-family:"Gaegu",cursive;
-  font-size:1.6rem;
-  line-height:1.05;
-  box-shadow:6px 7px 0 rgba(0,0,0,.2);
-}
-.speech:before{
-  content:"";
-  position:absolute;
-  left:-18px;
-  top:55px;
-  width:28px;height:28px;
-  background:var(--paper);
-  border-left:4px solid #221814;
-  border-bottom:4px solid #221814;
-  transform:rotate(45deg);
-}
-.panel{
-  position:absolute;
-  right:58px;
-  bottom:45px;
-  width:390px;
-  min-height:250px;
-  z-index:7;
-  background:rgba(255,242,209,.93);
-  border:4px solid #221814;
-  border-radius:22px;
-  padding:18px;
-  box-shadow:7px 8px 0 rgba(0,0,0,.22);
-}
-h2{
-  font-family:"Gaegu",cursive;
-  font-size:2.4rem;
-  line-height:.9;
-  margin:0 0 10px;
-}
-p{line-height:1.35}
-button{
-  width:100%;
-  margin-top:10px;
-  padding:10px 14px;
-  font-family:"Gaegu",cursive;
-  font-size:1.45rem;
-  font-weight:700;
-  border:3px solid #221814;
-  border-radius:16px;
-  background:var(--gold);
-  color:#251812;
-  box-shadow:4px 5px 0 rgba(0,0,0,.22);
-  cursor:pointer;
-}
+body{margin:0;background:#6f7d56;font-family:Quicksand,sans-serif;color:#3b2b20;display:flex;justify-content:center}
+.shop{width:min(760px,100%);min-height:100vh;background:#a8ad7a;position:relative;padding:18px;overflow:hidden}
+.shop:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 20%,#d7c79a99,transparent 25%),radial-gradient(circle at 90% 10%,#6f8f5f88,transparent 26%);pointer-events:none}
+.card,.sign,.bubble,.game,.reward{position:relative;z-index:2;background:#f5e4bd;border:3px solid #513927;border-radius:22px;box-shadow:5px 6px 0 #0002}
+.sign{text-align:center;padding:18px;margin:10px auto 18px;width:92%;background:#d5b982}
+h1{font-family:Gaegu,cursive;font-size:4.2rem;margin:0;line-height:.8}
+.sign p{font-family:Gaegu,cursive;font-size:1.35rem;margin:8px 0 0}
+.top{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:end}
+.bothina{height:310px;position:relative}
+.hijab{position:absolute;left:35px;top:18px;width:150px;height:190px;background:#b8b8af;border:4px solid #2c211b;border-radius:80px 80px 45px 45px}
+.face{position:absolute;left:55px;top:58px;width:110px;height:125px;background:#b77b57;border:4px solid #2c211b;border-radius:50%}
+.curl{position:absolute;left:73px;top:43px;font-family:Gaegu,cursive;font-size:42px}
+.eye{position:absolute;top:60px;width:14px;height:20px;background:#1e1714;border-radius:50%}.l{left:30px}.r{right:30px}
+.smile{position:absolute;left:39px;top:95px;width:32px;height:16px;border-bottom:4px solid #1e1714;border-radius:0 0 30px 30px}
+.ring{position:absolute;right:30px;top:84px;color:#f5d47d}
+.body{position:absolute;left:18px;top:185px;width:185px;height:110px;background:#6f8a52;border:4px solid #2c211b;border-radius:42px 42px 16px 16px}
+.apron{position:absolute;left:70px;top:200px;width:70px;height:86px;background:#efe0bd;border:3px solid #2c211b;border-radius:14px;display:grid;place-items:center;font-size:30px}
+.bubble{padding:18px;font-family:Gaegu,cursive;font-size:1.6rem;line-height:1.05;margin-bottom:12px}
+.shelf{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.jar{background:#d6c191;border:3px solid #513927;border-radius:14px;padding:12px;text-align:center;font-size:1.7rem;cursor:pointer}
+.pip{margin-top:10px;text-align:center;font-family:Gaegu,cursive;font-size:1.3rem}
+.games{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.game{padding:16px;text-align:center}
+h2{font-family:Gaegu,cursive;font-size:2.2rem;margin:0 0 8px}
+button{background:#7f925d;color:#fff8df;border:3px solid #513927;border-radius:14px;padding:10px 12px;font-family:Gaegu,cursive;font-size:1.35rem;font-weight:700;cursor:pointer;width:100%;margin-top:8px}
 button:hover{transform:translateY(-2px)}
+.info{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.card{padding:16px;text-align:center}
+.reward{padding:16px;margin-top:18px}
+.hidden{display:none}
 .answers{display:grid;gap:8px}
-.answers button{text-align:left;background:#fff7e6}
-.topline{display:flex;justify-content:space-between;font-weight:700}
-.catchbox{
-  height:245px;
-  border:4px solid #221814;
-  border-radius:18px;
-  background:linear-gradient(#254326,#101c11);
-  overflow:hidden;
-  position:relative;
-}
-.falling{
-  position:absolute;
-  top:-40px;
-  font-size:30px;
-  animation:drop 3s linear forwards;
-  user-select:none;
-}
-@keyframes drop{to{top:285px;transform:rotate(250deg)}}
-.reward{
-  position:absolute;
-  left:380px;
-  top:350px;
-  width:330px;
-  z-index:9;
-  background:#fff7e6;
-  border:4px double #221814;
-  border-radius:22px;
-  padding:16px;
-  box-shadow:7px 8px 0 rgba(0,0,0,.25);
-}
-.teaName{
-  font-family:"Gaegu",cursive;
-  font-size:2.2rem;
-  margin:4px 0;
-}
-.tag{
-  display:inline-block;
-  padding:4px 10px;
-  border-radius:999px;
-  background:#55335a;
-  color:white;
-  font-weight:700;
-}
-.tiny{
-  position:absolute;
-  z-index:8;
-  width:auto;
-  padding:8px 10px;
-  border-radius:999px;
-  font-size:1.4rem;
-}
-.dragon{right:430px;bottom:160px;background:#fff2d1cc}
-.book{right:38px;top:405px;background:#fff2d1cc}
-.ending{
-  position:absolute;
-  left:0;right:0;bottom:8px;
-  z-index:8;
-  text-align:center;
-  font-family:"Gaegu",cursive;
-  color:#fff2d1;
-  text-shadow:0 2px 5px #000;
-  font-size:1.35rem;
-  margin:0;
-}
-.hidden{display:none!important}
-.leaf{
-  position:absolute;
-  top:-35px;
-  z-index:10;
-  font-size:20px;
-  opacity:.7;
-  animation:leafFall linear forwards;
-  pointer-events:none;
-}
-@keyframes leafFall{
-  to{transform:translateY(760px) rotate(340deg);opacity:0}
-}
-@media(max-width:800px){
-  body{align-items:flex-start}
-  .scene{min-height:900px;margin:10px;width:96vw}
-  .sign{top:22px;width:86%;text-align:center}
-  .lantern{display:none}
-  .shelf{right:5%;top:145px;width:90%;grid-template-columns:repeat(4,1fr);min-height:auto}
-  .jar{height:50px;font-size:1.55rem}
-  .character{left:24px;bottom:280px;transform:scale(.82);transform-origin:bottom left}
-  .speech{
-    left:42%;
-    top:385px;
-    width:52%;
-    font-size:1.35rem;
-    padding:12px;
-  }
-  .panel{
-    left:5%;
-    right:5%;
-    bottom:55px;
-    width:90%;
-  }
-  .reward{
-    left:5%;
-    right:5%;
-    top:auto;
-    bottom:55px;
-    width:90%;
-  }
-  .dragon{right:22px;bottom:305px}
-  .book{right:18px;top:330px}
-}
+.catch{height:210px;background:#6f8a52;border:3px solid #513927;border-radius:16px;position:relative;overflow:hidden}
+.fall{position:absolute;top:-40px;font-size:28px;animation:drop 2.6s linear forwards;cursor:pointer}
+@keyframes drop{to{top:240px;transform:rotate(250deg)}}
+footer{position:relative;z-index:2;text-align:center;font-family:Gaegu,cursive;color:#f5e4bd;font-size:1.4rem;margin:22px 0 4px}
+@media(max-width:650px){.top,.games,.info{grid-template-columns:1fr}h1{font-size:3.2rem}.bothina{height:285px}.shop{padding:12px}}
 </style>
 </head>
-
 <body>
-<main class="scene">
-  <div class="lantern l1"></div>
-  <div class="lantern l2"></div>
-
-  <div class="sign"><h1>Bothina's Tea Shop</h1></div>
-
-  <div class="shelf">
-    <div class="jar">🍓</div><div class="jar">🌙</div><div class="jar">🍯</div><div class="jar">🍄</div>
-    <div class="jar">🫐</div><div class="jar">🌿</div><div class="jar">✨</div><div class="jar">🍵</div>
-  </div>
-
-  <div class="character">
-    <div class="hijab"></div>
-    <div class="face">
-      <div class="eye left"></div><div class="eye right"></div>
-      <div class="blush left"></div><div class="blush right"></div>
-      <div class="smile"></div><div class="ring">◦</div>
-    </div>
-    <div class="curl">〰</div>
-    <div class="body"></div>
-    <div class="apron">☕</div>
-  </div>
-
-  <div class="speech" id="speech">
-    Hi! I'm Bothina.<br>
-    <b>Win my little game and I'll brew you a magical tea. 🍵</b>
-  </div>
-
-  <section class="panel" id="home">
-    <h2>Choose a game</h2>
-    <p>Pick a tiny challenge. Win, and the tea spirits choose a cup for you.</p>
-    <button onclick="startQuiz()">🍃 Guess the Tea</button>
-    <button onclick="startCatcher()">☕ Tea Catcher</button>
+<main class="shop">
+  <section class="sign">
+    <h1>Bothina's<br>Tea Shop</h1>
+    <p>a cozy little place for magical brews ♡</p>
   </section>
 
-  <section class="panel hidden" id="quiz">
-    <div class="topline">
-      <span id="quizRound"></span>
-      <span id="quizScore"></span>
+  <section class="top">
+    <div class="bothina">
+      <div class="hijab"></div><div class="face"><div class="eye l"></div><div class="eye r"></div><div class="smile"></div><div class="ring">◦</div></div>
+      <div class="curl">〰</div><div class="body"></div><div class="apron">☕</div>
     </div>
-    <h2 id="question"></h2>
-    <div class="answers" id="answers"></div>
+    <div>
+      <div class="bubble" id="speech">Hi! I’m Bothina.<br>Win my little game and I’ll brew you a magical tea. ☕</div>
+      <div class="shelf">
+        <div class="jar">🍓</div><div class="jar">🌙</div><div class="jar">🍯</div>
+        <div class="jar">🌿</div><div class="jar">🌸</div><div class="jar">🫐</div>
+      </div>
+      <div class="pip">🐉 Pip’s Corner<br><small>He judges your skills.</small></div>
+    </div>
   </section>
 
-  <section class="panel hidden" id="catcher">
-    <div class="topline">
-      <span id="timeLeft">Time: 20</span>
-      <span id="catchScore">Score: 0</span>
+  <section id="home">
+    <div class="card" style="margin-top:18px;font-family:Gaegu,cursive;font-size:1.8rem">🍃 Choose a cup to begin 🍃</div>
+    <div class="games">
+      <div class="game"><h2>Guess the Tea</h2><p>Answer 3 tiny questions about magical ingredients.</p><button onclick="startQuiz()">Play</button></div>
+      <div class="game"><h2>Tea Catcher</h2><p>Catch good things for your tea. Avoid the yucky stuff.</p><button onclick="startCatch()">Play</button></div>
     </div>
-    <p>Catch 🍃 🌸 🫐 ✨ 🍯<br>Avoid 🐸 🕷️ 🔥</p>
-    <div class="catchbox" id="catchbox"></div>
-    <button onclick="finishCatcher()">Finish Brewing</button>
   </section>
 
-  <section class="reward hidden" id="reward"></section>
+  <section id="quiz" class="reward hidden">
+    <h2 id="q"></h2><div id="answers" class="answers"></div>
+  </section>
 
-  <button class="tiny dragon" onclick="dragonTalk()">🐉</button>
-  <button class="tiny book" onclick="journalTalk()">📖</button>
+  <section id="catcher" class="reward hidden">
+    <h2>Tea Catcher</h2><p><span id="time">Time: 12</span> · <span id="score">Score: 0</span></p>
+    <div class="catch" id="catchbox"></div>
+  </section>
 
-  <div class="counter"></div>
-  <p class="ending">Thank you for stopping by. The kettle is always warm.</p>
+  <section id="reward" class="reward hidden"></section>
+
+  <section class="info">
+    <div class="card"><h2>Today’s Whisper</h2><p>A warm cup can’t solve everything, but it’s a pretty good start. ♡</p></div>
+    <div class="card"><h2>Teas Collected</h2><p id="count">0 / 12</p><p>Keep playing to fill your journal!</p></div>
+  </section>
+
+  <footer>Thank you for stopping by.<br>The kettle is always warm here.</footer>
 </main>
 
 <script>
 const teas=[
-{name:"Dragon Berry Tea",rarity:"Rare",ingredients:"Dragonberries grown beside sleeping mountain dragons, wild hibiscus, ember honey.",effect:"Soothes strained vocal cords and warms the throat. Often served to singers, storytellers, and dragon negotiators."},
-{name:"Moonlit Lotus Tea",rarity:"Epic",ingredients:"Moon lotus petals, silver jasmine, dew gathered just before sunrise.",effect:"Clears mental fog and supports calm focus during late-night studying, journaling, or quiet spellwork."},
-{name:"Forest Whisper Tea",rarity:"Uncommon",ingredients:"Whisperleaf, pine tips, wild mint, and a pinch of moss sugar.",effect:"Sharpens attention to soft sounds and helps tired travelers feel grounded after long walks."},
-{name:"Frost Fern Tea",rarity:"Rare",ingredients:"Frost fern, snow mint, winter sage, and chilled pear peel.",effect:"Creates a gentle cooling sensation and helps soothe overheated cheeks and mild feverish feelings."},
-{name:"Fairy Blossom Tea",rarity:"Legendary",ingredients:"Fairy blossom petals gathered with permission, chamomile, crystal pollen, and soft honey.",effect:"Encourages deep rest and supports the body's natural recovery after emotionally heavy days."},
-{name:"Blueberry Stardew Tea",rarity:"Rare",ingredients:"Moon blueberries, lavender, oatflower, and warm clover honey.",effect:"Comforts the stomach and softens anxious thoughts. Best brewed on rainy evenings."},
-{name:"Beginner's Blend",rarity:"Common",ingredients:"Mint, chamomile, honey, and one brave little leaf.",effect:"A gentle cup for every traveler taking their first steps. No one leaves the shop empty-handed."}
+["Dragon Berry Tea","Dragonberries, hibiscus, ember honey","Soothes tired vocal cords and warms the throat."],
+["Moonlit Lotus Tea","Moon lotus, silver jasmine, dawn dew","Clears mental fog and supports calm focus."],
+["Forest Whisper Tea","Whisperleaf, pine tips, wild mint","Helps tired travelers feel grounded."],
+["Fairy Blossom Tea","Fairy blossom, chamomile, crystal pollen","Encourages deep rest after heavy days."],
+["Blueberry Stardew Tea","Moon blueberries, lavender, oatflower","Comforts the stomach and softens anxious thoughts."]
 ];
-
-const questions=[
-{q:"Which tea would help a bard with tired vocal cords?",correct:"Dragon Berry Tea",options:["Dragon Berry Tea","Frost Fern Tea","Moonlit Lotus Tea","Forest Whisper Tea"]},
-{q:"Which tea is brewed with petals that open under moonlight?",correct:"Moonlit Lotus Tea",options:["Fairy Blossom Tea","Beginner's Blend","Moonlit Lotus Tea","Dragon Berry Tea"]},
-{q:"Which ingredient should be gathered with permission?",correct:"Fairy blossom petals",options:["Fairy blossom petals","Snow mint","Pine tips","Dragonberries"]},
-{q:"Which tea would cool an overheated traveler?",correct:"Frost Fern Tea",options:["Moonlit Lotus Tea","Frost Fern Tea","Beginner's Blend","Dragon Berry Tea"]},
-{q:"Which tea helps travelers feel grounded after long walks?",correct:"Forest Whisper Tea",options:["Forest Whisper Tea","Fairy Blossom Tea","Frost Fern Tea","Beginner's Blend"]}
+const qs=[
+["Which tea helps tired vocal cords?","Dragon Berry Tea",["Dragon Berry Tea","Moonlit Lotus Tea","Forest Whisper Tea"]],
+["Which tea helps calm focus?","Moonlit Lotus Tea",["Fairy Blossom Tea","Moonlit Lotus Tea","Blueberry Stardew Tea"]],
+["Which tea feels grounding after long walks?","Forest Whisper Tea",["Forest Whisper Tea","Dragon Berry Tea","Fairy Blossom Tea"]]
 ];
-
-let qi=0,qs=0,cs=0,time=20,timer,spawner;
+let qi=0,points=0,score=0,time=12,timer,spawn;
 const $=id=>document.getElementById(id);
-
-function show(id){
-  ["home","quiz","catcher"].forEach(x=>$(x).classList.toggle("hidden",x!==id));
-  $("reward").classList.add("hidden");
-}
-
-function startQuiz(){
-  qi=0;qs=0;
-  $("speech").textContent="Choose carefully. The teapots are listening.";
-  show("quiz");
-  nextQ();
-}
-
-function nextQ(){
-  let item=questions[qi];
-  $("quizRound").textContent=`Question ${qi+1}/${questions.length}`;
-  $("quizScore").textContent=`Score: ${qs}`;
-  $("question").textContent=item.q;
-  $("answers").innerHTML="";
-  item.options.forEach(op=>{
-    let b=document.createElement("button");
-    b.textContent=op;
-    b.onclick=()=>{
-      if(op===item.correct)qs++;
-      qi++;
-      if(qi>=questions.length)brew(qs>=3);
-      else nextQ();
-    };
-    $("answers").appendChild(b);
-  });
-}
-
-function startCatcher(){
-  cs=0;time=20;
-  $("catchbox").innerHTML="";
-  $("speech").textContent="Catch the good ingredients. Please do not put frogs in the kettle.";
-  show("catcher");
-  updateCatch();
-  clearInterval(timer);clearInterval(spawner);
-  timer=setInterval(()=>{
-    time--;updateCatch();
-    if(time<=0)finishCatcher();
-  },1000);
-  spawner=setInterval(spawn,650);
-}
-
-function updateCatch(){
-  $("timeLeft").textContent=`Time: ${time}`;
-  $("catchScore").textContent=`Score: ${cs}`;
-}
-
-function spawn(){
-  const good=["🍃","🌸","🫐","✨","🍯"],bad=["🐸","🕷️","🔥"];
-  const ok=Math.random()>.28;
-  let s=document.createElement("span");
-  s.className="falling";
-  s.textContent=ok?good[Math.floor(Math.random()*good.length)]:bad[Math.floor(Math.random()*bad.length)];
-  s.style.left=Math.random()*88+"%";
-  s.onclick=()=>{
-    cs+=ok?1:-2;
-    if(cs<0)cs=0;
-    updateCatch();
-    s.remove();
-  };
-  $("catchbox").appendChild(s);
-  setTimeout(()=>s.remove(),3100);
-}
-
-function finishCatcher(){
-  clearInterval(timer);clearInterval(spawner);
-  brew(cs>=12);
-}
-
-function brew(won){
-  show("home");
-  const tea=won?teas[Math.floor(Math.random()*(teas.length-1))]:teas[teas.length-1];
-  let saved=JSON.parse(localStorage.getItem("bothinaTeas")||"[]");
-  if(!saved.includes(tea.name)){saved.push(tea.name);localStorage.setItem("bothinaTeas",JSON.stringify(saved));}
-  $("speech").textContent=won?"You won. The kettle picked something special for you.":"That's alright. Every tea master starts somewhere.";
-  $("reward").innerHTML=`
-    <span class="tag">${tea.rarity}</span>
-    <div class="teaName">🍵 ${tea.name}</div>
-    <p><b>Ingredients</b><br>${tea.ingredients}</p>
-    <p><b>Effect</b><br>${tea.effect}</p>
-    <p><b>Tea Keeper's Journal</b><br>You have collected ${saved.length} tea${saved.length===1?"":"s"} on this device.</p>
-    <button onclick="startQuiz()">Play Guess the Tea</button>
-    <button onclick="startCatcher()">Play Tea Catcher</button>
-  `;
-  $("reward").classList.remove("hidden");
-}
-
-function dragonTalk(){
-  const lines=["Pip looks innocent. Too innocent.","Pip has crumbs on his face.","Pip is dreaming about ember honey.","Pip quietly guards the teacups."];
-  $("speech").textContent=lines[Math.floor(Math.random()*lines.length)];
-}
-
-function journalTalk(){
-  let saved=JSON.parse(localStorage.getItem("bothinaTeas")||"[]");
-  $("speech").textContent=saved.length?`Your journal has ${saved.length} tea${saved.length===1?"":"s"} inside.`:"Your journal is empty for now. Win a game and I'll brew your first tea.";
-}
-
-document.querySelectorAll(".jar").forEach(j=>{
-  j.onclick=()=>{
-    const lines=["The kettle sings when it's happy.","Fairy blossoms are picked with permission only.","If the shelf rattles, the mushrooms are arguing.","I hope you like berries.","The dragon promised not to steal sugar today."];
-    $("speech").textContent=lines[Math.floor(Math.random()*lines.length)];
-  };
-});
-
-function leaf(){
-  let l=document.createElement("span");
-  l.className="leaf";
-  l.textContent=["🍃","🍂","✨"][Math.floor(Math.random()*3)];
-  l.style.left=Math.random()*100+"%";
-  l.style.animationDuration=(5+Math.random()*5)+"s";
-  document.querySelector(".scene").appendChild(l);
-  setTimeout(()=>l.remove(),9000);
-}
-setInterval(leaf,900);
+function hideAll(){["home","quiz","catcher","reward"].forEach(x=>$(x).classList.add("hidden"))}
+function startQuiz(){hideAll();$("quiz").classList.remove("hidden");qi=0;points=0;showQ();$("speech").textContent="Choose carefully. The teapots are listening."}
+function showQ(){let item=qs[qi];$("q").textContent=item[0];$("answers").innerHTML="";item[2].forEach(a=>{let b=document.createElement("button");b.textContent=a;b.onclick=()=>{if(a==item[1])points++;qi++;qi>=qs.length?brew(points>=2):showQ()};$("answers").appendChild(b)})}
+function startCatch(){hideAll();$("catcher").classList.remove("hidden");score=0;time=12;$("catchbox").innerHTML="";update();timer=setInterval(()=>{time--;update();if(time<=0)finish()},1000);spawn=setInterval(drop,550);$("speech").textContent="Catch the good ingredients. No frogs in the kettle please."}
+function update(){$("time").textContent="Time: "+time;$("score").textContent="Score: "+score}
+function drop(){let good=["🍃","🌸","🫐","✨","🍯"],bad=["🐸","🕷️","🔥"],ok=Math.random()>.3,s=document.createElement("span");s.className="fall";s.textContent=ok?good[Math.floor(Math.random()*good.length)]:bad[Math.floor(Math.random()*bad.length)];s.style.left=Math.random()*85+"%";s.onclick=()=>{score+=ok?1:-2;if(score<0)score=0;update();s.remove()};$("catchbox").appendChild(s);setTimeout(()=>s.remove(),2700)}
+function finish(){clearInterval(timer);clearInterval(spawn);brew(score>=7)}
+function brew(win){hideAll();let t=win?teas[Math.floor(Math.random()*teas.length)]:["Beginner’s Blend","Mint, chamomile, honey","A gentle cup for every traveler taking their first steps."];let saved=JSON.parse(localStorage.getItem("teas")||"[]");if(!saved.includes(t[0]))saved.push(t[0]);localStorage.setItem("teas",JSON.stringify(saved));$("count").textContent=saved.length+" / 12";$("reward").innerHTML=`<h2>🍵 ${t[0]}</h2><p><b>Ingredients:</b><br>${t[1]}</p><p><b>Effect:</b><br>${t[2]}</p><button onclick="location.reload()">Return to Shop</button>`;$("reward").classList.remove("hidden");$("speech").textContent=win?"Your tea is ready.":"That’s alright. Every tea master starts somewhere."}
+document.querySelectorAll(".jar").forEach(j=>j.onclick=()=>$("speech").textContent=["The kettle sings when it’s happy.","Pip has crumbs on his face.","Fairy blossoms are picked with permission only.","I hope you like berries."][Math.floor(Math.random()*4)])
+$("count").textContent=(JSON.parse(localStorage.getItem("teas")||"[]").length)+" / 12";
 </script>
 </body>
 </html>
