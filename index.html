@@ -1,4 +1,5 @@
-  <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -423,16 +424,16 @@ button:hover{transform:translateY(-2px)}
     <div class="face">
       <div class="eye left"></div><div class="eye right"></div>
       <div class="blush left"></div><div class="blush right"></div>
-      <div class="smile"></div><div class=">◦</div>
+      <div class="smile"></div><div class="ring">◦</div>
     </div>
-    <div
+    <div class="curl">〰</div>
     <div class="body"></div>
     <div class="apron">☕</div>
   </div>
 
   <div class="speech" id="speech">
     Hi! I'm Bothina.<br>
-    <b> Win my little game and I'll brew you a magical tea. 🍵</b>
+    <b>Win my little game and I'll brew you a magical tea. 🍵</b>
   </div>
 
   <section class="panel" id="home">
@@ -583,7 +584,7 @@ function brew(won){
 }
 
 function dragonTalk(){
-  const lines=["Pip has crumbs on his face.","Pip is dreaming about ember honey.","Pip quietly guards the teacups."];
+  const lines=["Pip looks innocent. Too innocent.","Pip has crumbs on his face.","Pip is dreaming about ember honey.","Pip quietly guards the teacups."];
   $("speech").textContent=lines[Math.floor(Math.random()*lines.length)];
 }
 
