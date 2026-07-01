@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Bothina's Tea Shop</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 *{box-sizing:border-box}
@@ -23,89 +23,81 @@
 body{
   margin:0;
   min-height:100vh;
-  font-family:"Press Start 2P",cursive;
+  font-family:"Quicksand",sans-serif;
   color:var(--ink);
   background:
-    repeating-linear-gradient(0deg,#18301e 0px,#18301e 16px,#0e0b08 16px,#0e0b08 32px),
-    repeating-linear-gradient(90deg,#1a2818 0px,#1a2818 16px,#0e0b08 16px,#0e0b08 32px);
+    radial-gradient(circle at 20% 10%,rgba(255,218,135,.28),transparent 25%),
+    linear-gradient(#18301e,#0e0b08);
   display:flex;
   justify-content:center;
   align-items:center;
   overflow-x:hidden;
-  image-rendering:pixelated;
 }
 .scene{
   width:min(1100px,96vw);
   min-height:720px;
   margin:18px;
-  border:8px solid #2b1b14;
-  border-radius:0px;
+  border:5px solid #2b1b14;
+  border-radius:30px;
   position:relative;
   overflow:hidden;
   background:
-    repeating-linear-gradient(90deg,#765034 0 16px,#67432e 16px 32px),
-    repeating-linear-gradient(0deg,#6d4c38 0 16px,#58392e 16px 32px);
-  box-shadow:inset -4px -4px 0 rgba(0,0,0,.5), inset 4px 4px 0 rgba(255,255,255,.1), 12px 12px 0 rgba(0,0,0,.6);
-  image-rendering:pixelated;
+    radial-gradient(circle at 50% 0%,rgba(255,218,125,.42),transparent 28%),
+    linear-gradient(rgba(255,235,190,.68),rgba(255,235,190,.55)),
+    repeating-linear-gradient(90deg,#765034 0 26px,#67432e 26px 52px);
+  box-shadow:0 26px 80px rgba(0,0,0,.55);
 }
 .scene:before{
   content:"";
   position:absolute;
   inset:0;
   background:
-    repeating-linear-gradient(0deg,transparent 0 32px,rgba(53,95,53,.15) 32px 48px),
-    repeating-linear-gradient(90deg,transparent 0 48px,rgba(37,61,35,.12) 48px 64px);
-  opacity:1;
-  z-index:1;
+    radial-gradient(circle at 18% 20%,rgba(53,95,53,.6),transparent 18%),
+    radial-gradient(circle at 86% 18%,rgba(63,101,60,.55),transparent 20%),
+    radial-gradient(circle at 70% 78%,rgba(37,61,35,.7),transparent 24%);
+  opacity:.65;
 }
 .lantern{
   position:absolute;
   top:18px;
-  width:32px;
-  height:48px;
+  width:50px;
+  height:70px;
   border:4px solid #2b1b14;
-  border-radius:0px;
-  background:#ffd700;
-  box-shadow:inset -2px -2px 0 #c49000, inset 2px 2px 0 #ffff99, 0 0 0 2px #2b1b14;
+  border-radius:28px 28px 18px 18px;
+  background:radial-gradient(circle,#ffe8a5,#d49b44 72%);
+  box-shadow:0 0 32px rgba(255,218,118,.9);
   z-index:3;
-  animation:bobbing 2s ease-in-out infinite;
-  image-rendering:pixelated;
+  animation:sway 3s ease-in-out infinite alternate;
 }
-.l1{left:95px}.l2{right:115px;animation-delay:.5s}
+.l1{left:95px}.l2{right:115px;animation-delay:.7s}
 .lantern:before{
   content:"";
   position:absolute;
-  top:-20px;
+  top:-25px;
   left:50%;
   width:4px;
-  height:20px;
+  height:25px;
   background:#2b1b14;
-  transform:translateX(-2px);
 }
-@keyframes bobbing{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-8px)}
-}
+@keyframes sway{to{transform:rotate(3deg)}}
 .sign{
   position:absolute;
   top:52px;
   left:50%;
-  transform:translateX(-50%);
+  transform:translateX(-50%) rotate(-1deg);
   z-index:4;
-  background:#8b5a2b;
+  background:#6d452d;
   color:#fff1d1;
   border:4px solid #2b1b14;
-  border-radius:0px;
+  border-radius:18px;
   padding:12px 28px;
-  box-shadow:inset -2px -2px 0 #5a3a1b, inset 2px 2px 0 #b88a3b, 4px 4px 0 #2b1b14;
-  image-rendering:pixelated;
+  box-shadow:6px 7px 0 rgba(0,0,0,.22);
 }
 .sign h1{
   margin:0;
-  font-family:"Press Start 2P",cursive;
-  font-size:clamp(1.5rem,5vw,2.5rem);
-  line-height:1.2;
-  letter-spacing:2px;
+  font-family:"Gaegu",cursive;
+  font-size:clamp(2.5rem,7vw,5rem);
+  line-height:.8;
 }
 .shelf{
   position:absolute;
@@ -114,33 +106,26 @@ body{
   width:360px;
   min-height:210px;
   z-index:2;
-  border:6px solid #3a241a;
-  border-radius:0px;
-  background:#5a3a2a;
+  border:5px solid #3a241a;
+  border-radius:18px;
+  background:rgba(89,55,36,.75);
   padding:16px;
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:12px;
-  box-shadow:inset -3px -3px 0 #2a1a1a, inset 3px 3px 0 #8a5a4a;
-  image-rendering:pixelated;
 }
 .jar{
   height:70px;
-  border:4px solid #2b1b14;
-  border-radius:0px;
-  background:#f5e6d3;
+  border:3px solid #2b1b14;
+  border-radius:16px 16px 24px 24px;
+  background:rgba(255,246,223,.75);
   display:grid;
   place-items:center;
   font-size:2rem;
   cursor:pointer;
-  transition:none;
-  box-shadow:inset -2px -2px 0 #8b7355, inset 2px 2px 0 #ffffcc;
-  image-rendering:pixelated;
+  transition:.18s;
 }
-.jar:active{
-  box-shadow:inset -2px -2px 0 #ffffcc, inset 2px 2px 0 #8b7355;
-  transform:translateY(2px);
-}
+.jar:hover{transform:translateY(-5px) rotate(-3deg)}
 .counter{
   position:absolute;
   left:0;
@@ -148,103 +133,104 @@ body{
   bottom:0;
   height:190px;
   background:
-    repeating-linear-gradient(90deg,#5a4a38 0 16px,#4a3a28 16px 32px);
-  border-top:6px solid #2b1b14;
+    linear-gradient(rgba(88,52,33,.92),rgba(70,41,27,.98)),
+    repeating-linear-gradient(90deg,#70472e 0 28px,#5e3b27 28px 56px);
+  border-top:5px solid #2b1b14;
   z-index:3;
-  box-shadow:inset 0 4px 0 rgba(255,255,255,.1);
 }
 .character{
   position:absolute;
   left:95px;
   bottom:100px;
-  width:240px;
-  height:280px;
+  width:260px;
+  height:360px;
   z-index:5;
-  filter:none;
-  image-rendering:pixelated;
+  filter:drop-shadow(0 8px 0 rgba(0,0,0,.22));
 }
 .hijab{
   position:absolute;
-  left:40px;
-  top:0px;
-  width:160px;
-  height:120px;
-  background:#5a6a7a;
-  border:4px solid #2a2a2a;
-  border-radius:0px;
-  box-shadow:inset -3px -3px 0 #3a4a5a, inset 3px 3px 0 #8abaaa;
+  left:48px;
+  top:8px;
+  width:165px;
+  height:225px;
+  background:#7d807d;
+  border:5px solid #221814;
+  border-radius:82px 82px 48px 48px;
 }
 .face{
   position:absolute;
-  left:60px;
-  top:90px;
-  width:120px;
-  height:100px;
-  background:#c9956a;
-  border:4px solid #2a2a2a;
-  border-radius:0px;
-  box-shadow:inset -2px -2px 0 #8a5a4a, inset 2px 2px 0 #f5d5b8;
+  left:65px;
+  top:48px;
+  width:132px;
+  height:150px;
+  background:#b8795f;
+  border:5px solid #221814;
+  border-radius:48%;
+}
+.curl{
+  position:absolute;
+  left:75px;
+  top:34px;
+  font-family:"Gaegu",cursive;
+  font-size:58px;
+  z-index:6;
+  transform:rotate(-20deg);
 }
 .eye{
   position:absolute;
-  top:30px;
-  width:16px;
+  top:78px;
+  width:14px;
   height:20px;
-  background:#1a1a1a;
-  border:2px solid #1a1a1a;
-  border-radius:0px;
+  background:#1e1512;
+  border-radius:50%;
 }
-.eye:after{
-  content:"";
-  position:absolute;
-  width:6px;
-  height:8px;
-  background:#ffffff;
-  top:2px;
-  left:2px;
-}
-.eye.left{left:28px}.eye.right{right:28px}
+.eye.left{left:38px}.eye.right{right:38px}
 .blush{
   position:absolute;
-  top:50px;
-  width:16px;
-  height:8px;
-  background:#d87a6a;
-  border-radius:0px;
+  top:103px;
+  width:20px;height:10px;
+  background:rgba(196,123,112,.65);
+  border-radius:50%;
 }
-.blush.left{left:20px}.blush.right{right:20px}
+.blush.left{left:22px}.blush.right{right:22px}
 .smile{
   position:absolute;
-  left:40px;
-  top:70px;
-  width:40px;
-  height:4px;
-  background:#1a1a1a;
+  left:48px;
+  top:116px;
+  width:36px;
+  height:20px;
+  border-bottom:4px solid #1e1512;
+  border-radius:0 0 30px 30px;
+}
+.ring{
+  position:absolute;
+  right:39px;
+  top:101px;
+  color:#ffe39b;
+  font-size:18px;
 }
 .body{
   position:absolute;
-  left:24px;
-  top:180px;
-  width:192px;
-  height:80px;
-  background:#4a7a46;
-  border:4px solid #2a2a2a;
-  border-radius:0px;
-  box-shadow:inset -2px -2px 0 #2a5a22, inset 2px 2px 0 #8aaada;
+  left:32px;
+  top:205px;
+  width:195px;
+  height:120px;
+  background:#4f7146;
+  border:5px solid #221814;
+  border-radius:48px 48px 20px 20px;
 }
 .apron{
   position:absolute;
-  left:80px;
-  top:185px;
-  width:80px;
-  height:100px;
-  background:#f5d5a8;
-  border:4px solid #2a2a2a;
-  border-radius:0px;
+  left:85px;
+  top:218px;
+  width:90px;
+  height:115px;
+  background:#efd4a8;
+  border:4px solid #221814;
+  border-radius:18px;
   display:grid;
   place-items:center;
   font-size:2rem;
-  box-shadow:inset -2px -2px 0 #c9956a, inset 2px 2px 0 #fffaec;
 }
 .speech{
   position:absolute;
@@ -254,28 +240,24 @@ body{
   min-height:120px;
   z-index:6;
   background:var(--paper);
-  border:4px solid #2a2a2a;
-  border-radius:0px;
+  border:4px solid #221814;
+  border-radius:28px;
   padding:16px 18px;
-  font-family:"Press Start 2P",cursive;
-  font-size:0.85rem;
-  line-height:1.4;
-  box-shadow:inset -2px -2px 0 #c9956a, inset 2px 2px 0 #fffaec, 4px 4px 0 #2a2a2a;
-  word-wrap:break-word;
-  overflow-wrap:break-word;
-  image-rendering:pixelated;
+  font-family:"Gaegu",cursive;
+  font-size:1.6rem;
+  line-height:1.05;
+  box-shadow:6px 7px 0 rgba(0,0,0,.2);
 }
 .speech:before{
   content:"";
   position:absolute;
-  left:-16px;
-  top:50px;
-  width:16px;
-  height:16px;
+  left:-18px;
+  top:55px;
+  width:28px;height:28px;
   background:var(--paper);
-  border-left:4px solid #2a2a2a;
-  border-bottom:4px solid #2a2a2a;
-  border-radius:0px;
+  border-left:4px solid #221814;
+  border-bottom:4px solid #221814;
+  transform:rotate(45deg);
 }
 .panel{
   position:absolute;
@@ -284,79 +266,53 @@ body{
   width:390px;
   min-height:250px;
   z-index:7;
-  background:#fff2d1;
-  border:4px solid #2a2a2a;
-  border-radius:0px;
+  background:rgba(255,242,209,.93);
+  border:4px solid #221814;
+  border-radius:22px;
   padding:18px;
-  box-shadow:inset -3px -3px 0 #c9956a, inset 3px 3px 0 #fffaec, 4px 4px 0 #2a2a2a;
-  image-rendering:pixelated;
+  box-shadow:7px 8px 0 rgba(0,0,0,.22);
 }
 h2{
-  font-family:"Press Start 2P",cursive;
-  font-size:1.2rem;
-  line-height:1.2;
+  font-family:"Gaegu",cursive;
+  font-size:2.4rem;
+  line-height:.9;
   margin:0 0 10px;
-  letter-spacing:1px;
 }
-p{
-  line-height:1.5;
-  font-size:0.75rem;
-  margin:8px 0;
-}
+p{line-height:1.35}
 button{
   width:100%;
   margin-top:10px;
   padding:10px 14px;
-  font-family:"Press Start 2P",cursive;
-  font-size:0.75rem;
+  font-family:"Gaegu",cursive;
+  font-size:1.45rem;
   font-weight:700;
-  border:3px solid #2a2a2a;
-  border-radius:0px;
-  background:#d8a64d;
+  border:3px solid #221814;
+  border-radius:16px;
+  background:var(--gold);
   color:#251812;
-  box-shadow:inset -2px -2px 0 #a87a2d, inset 2px 2px 0 #fffaec, 3px 3px 0 #2a2a2a;
+  box-shadow:4px 5px 0 rgba(0,0,0,.22);
   cursor:pointer;
-  transition:none;
-  letter-spacing:1px;
-  image-rendering:pixelated;
 }
-button:active{
-  box-shadow:inset -2px -2px 0 #fffaec, inset 2px 2px 0 #a87a2d, 1px 1px 0 #2a2a2a;
-  transform:translateY(2px) translateX(1px);
-}
+button:hover{transform:translateY(-2px)}
 .answers{display:grid;gap:8px}
 .answers button{text-align:left;background:#fff7e6}
-.topline{
-  display:flex;
-  justify-content:space-between;
-  font-weight:700;
-  font-size:0.7rem;
-  margin-bottom:8px;
-  letter-spacing:1px;
-}
+.topline{display:flex;justify-content:space-between;font-weight:700}
 .catchbox{
   height:245px;
-  border:4px solid #2a2a2a;
-  border-radius:0px;
-  background:linear-gradient(180deg,#2a4a36 0%,#1a2a20 50%,#0a1a10 100%);
+  border:4px solid #221814;
+  border-radius:18px;
+  background:linear-gradient(#254326,#101c11);
   overflow:hidden;
   position:relative;
-  box-shadow:inset -2px -2px 0 #0a0a0a, inset 2px 2px 0 #5a8a6a;
 }
 .falling{
   position:absolute;
   top:-40px;
   font-size:30px;
-  animation:pixelDrop 3s steps(30,end) forwards;
+  animation:drop 3s linear forwards;
   user-select:none;
-  image-rendering:pixelated;
 }
-@keyframes pixelDrop{
-  to{
-    top:285px;
-    transform:rotate(250deg);
-  }
-}
+@keyframes drop{to{top:285px;transform:rotate(250deg)}}
 .reward{
   position:absolute;
   left:380px;
@@ -364,63 +320,44 @@ button:active{
   width:330px;
   z-index:9;
   background:#fff7e6;
-  border:4px double #2a2a2a;
-  border-radius:0px;
+  border:4px double #221814;
+  border-radius:22px;
   padding:16px;
-  box-shadow:inset -3px -3px 0 #c9956a, inset 3px 3px 0 #fffaec, 4px 4px 0 #2a2a2a;
-  image-rendering:pixelated;
+  box-shadow:7px 8px 0 rgba(0,0,0,.25);
 }
 .teaName{
-  font-family:"Press Start 2P",cursive;
-  font-size:1.1rem;
+  font-family:"Gaegu",cursive;
+  font-size:2.2rem;
   margin:4px 0;
-  letter-spacing:1px;
 }
 .tag{
   display:inline-block;
   padding:4px 10px;
-  border-radius:0px;
+  border-radius:999px;
   background:#55335a;
-  color:#fff2d1;
+  color:white;
   font-weight:700;
-  border:2px solid #2a2a2a;
-  font-family:"Press Start 2P",cursive;
-  font-size:0.6rem;
-  letter-spacing:1px;
-  box-shadow:2px 2px 0 #2a2a2a;
 }
 .tiny{
   position:absolute;
   z-index:8;
   width:auto;
   padding:8px 10px;
-  border-radius:0px;
-  font-size:1rem;
-  border:3px solid #2a2a2a;
-  background:#fff2d1cc;
-  box-shadow:inset -2px -2px 0 #c9956a, inset 2px 2px 0 #fffaec, 3px 3px 0 #2a2a2a;
-  font-family:"Press Start 2P",cursive;
-  cursor:pointer;
-  transition:none;
-  image-rendering:pixelated;
+  border-radius:999px;
+  font-size:1.4rem;
 }
-.tiny:active{
-  box-shadow:inset -2px -2px 0 #fffaec, inset 2px 2px 0 #c9956a, 1px 1px 0 #2a2a2a;
-  transform:translateY(1px) translateX(1px);
-}
-.dragon{right:430px;bottom:160px}
-.book{right:38px;top:405px}
+.dragon{right:430px;bottom:160px;background:#fff2d1cc}
+.book{right:38px;top:405px;background:#fff2d1cc}
 .ending{
   position:absolute;
   left:0;right:0;bottom:8px;
   z-index:8;
   text-align:center;
-  font-family:"Press Start 2P",cursive;
+  font-family:"Gaegu",cursive;
   color:#fff2d1;
-  text-shadow:2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;
-  font-size:0.65rem;
+  text-shadow:0 2px 5px #000;
+  font-size:1.35rem;
   margin:0;
-  letter-spacing:1px;
 }
 .hidden{display:none!important}
 .leaf{
@@ -428,16 +365,12 @@ button:active{
   top:-35px;
   z-index:10;
   font-size:20px;
-  opacity:.8;
-  animation:pixelLeafFall linear forwards;
+  opacity:.7;
+  animation:leafFall linear forwards;
   pointer-events:none;
-  image-rendering:pixelated;
 }
-@keyframes pixelLeafFall{
-  to{
-    transform:translateY(760px) rotate(340deg);
-    opacity:0;
-  }
+@keyframes leafFall{
+  to{transform:translateY(760px) rotate(340deg);opacity:0}
 }
 @media(max-width:800px){
   body{align-items:flex-start}
@@ -446,12 +379,12 @@ button:active{
   .lantern{display:none}
   .shelf{right:5%;top:145px;width:90%;grid-template-columns:repeat(4,1fr);min-height:auto}
   .jar{height:50px;font-size:1.55rem}
-  .character{left:24px;bottom:280px;transform:scale(.75);transform-origin:bottom left}
+  .character{left:24px;bottom:280px;transform:scale(.82);transform-origin:bottom left}
   .speech{
     left:42%;
     top:385px;
     width:52%;
-    font-size:0.7rem;
+    font-size:1.35rem;
     padding:12px;
   }
   .panel{
@@ -478,7 +411,7 @@ button:active{
   <div class="lantern l1"></div>
   <div class="lantern l2"></div>
 
-  <div class="sign"><h1>BOTHINA'S TEA</h1></div>
+  <div class="sign"><h1>Bothina's Tea Shop</h1></div>
 
   <div class="shelf">
     <div class="jar">🍓</div><div class="jar">🌙</div><div class="jar">🍯</div><div class="jar">🍄</div>
@@ -497,15 +430,15 @@ button:active{
   </div>
 
   <div class="speech" id="speech">
-    HI! I'M BOTHINA<br>
-    WIN AND BREW TEA
+    Hi! I'm Bothina.<br>
+    <b>Win my little game and I'll brew you a magical tea. 🍵</b>
   </div>
 
   <section class="panel" id="home">
-    <h2>CHOOSE</h2>
-    <p>PICK CHALLENGE WIN TEA</p>
-    <button onclick="startQuiz()">GUESS TEA</button>
-    <button onclick="startCatcher()">CATCH!</button>
+    <h2>Choose a game</h2>
+    <p>Pick a tiny challenge. Win, and the tea spirits choose a cup for you.</p>
+    <button onclick="startQuiz()">🍃 Guess the Tea</button>
+    <button onclick="startCatcher()">☕ Tea Catcher</button>
   </section>
 
   <section class="panel hidden" id="quiz">
@@ -513,18 +446,18 @@ button:active{
       <span id="quizRound"></span>
       <span id="quizScore"></span>
     </div>
-    <h2 id="question" style="font-size:0.9rem;"></h2>
+    <h2 id="question"></h2>
     <div class="answers" id="answers"></div>
   </section>
 
   <section class="panel hidden" id="catcher">
     <div class="topline">
-      <span id="timeLeft">TIME:20</span>
-      <span id="catchScore">SCORE:0</span>
+      <span id="timeLeft">Time: 20</span>
+      <span id="catchScore">Score: 0</span>
     </div>
-    <p>CATCH: 🍃🌸🫐✨🍯<br>AVOID: 🐸🕷️🔥</p>
+    <p>Catch 🍃 🌸 🫐 ✨ 🍯<br>Avoid 🐸 🕷️ 🔥</p>
     <div class="catchbox" id="catchbox"></div>
-    <button onclick="finishCatcher()">BREW!</button>
+    <button onclick="finishCatcher()">Finish Brewing</button>
   </section>
 
   <section class="reward hidden" id="reward"></section>
@@ -533,26 +466,26 @@ button:active{
   <button class="tiny book" onclick="journalTalk()">📖</button>
 
   <div class="counter"></div>
-  <p class="ending">KETTLE WARM</p>
+  <p class="ending">Thank you for stopping by. The kettle is always warm.</p>
 </main>
 
 <script>
 const teas=[
-{name:"Dragon Berry Tea",rarity:"RARE",ingredients:"Dragonberries, wild hibiscus, ember honey.",effect:"Soothes vocal cords. Warms throat."},
-{name:"Moonlit Lotus Tea",rarity:"EPIC",ingredients:"Moon lotus petals, silver jasmine, sunrise dew.",effect:"Clears fog. Calm focus."},
-{name:"Forest Whisper Tea",rarity:"UNCOMMON",ingredients:"Whisperleaf, pine tips, wild mint, moss sugar.",effect:"Sharpens hearing. Grounds travelers."},
-{name:"Frost Fern Tea",rarity:"RARE",ingredients:"Frost fern, snow mint, winter sage, pear peel.",effect:"Cooling sensation. Soothes fever."},
-{name:"Fairy Blossom Tea",rarity:"LEGENDARY",ingredients:"Fairy blossoms, chamomile, crystal pollen, honey.",effect:"Deep rest. Body renewal."},
-{name:"Blueberry Stardew Tea",rarity:"RARE",ingredients:"Moon blueberries, lavender, oatflower, clover honey.",effect:"Stomach comfort. Eases anxiety."},
-{name:"Beginner's Blend",rarity:"COMMON",ingredients:"Mint, chamomile, honey, brave leaf.",effect:"Gentle. Every traveler welcome."}
+{name:"Dragon Berry Tea",rarity:"Rare",ingredients:"Dragonberries grown beside sleeping mountain dragons, wild hibiscus, ember honey.",effect:"Soothes strained vocal cords and warms the throat. Often served to singers, storytellers, and dragon negotiators."},
+{name:"Moonlit Lotus Tea",rarity:"Epic",ingredients:"Moon lotus petals, silver jasmine, dew gathered just before sunrise.",effect:"Clears mental fog and supports calm focus during late-night studying, journaling, or quiet spellwork."},
+{name:"Forest Whisper Tea",rarity:"Uncommon",ingredients:"Whisperleaf, pine tips, wild mint, and a pinch of moss sugar.",effect:"Sharpens attention to soft sounds and helps tired travelers feel grounded after long walks."},
+{name:"Frost Fern Tea",rarity:"Rare",ingredients:"Frost fern, snow mint, winter sage, and chilled pear peel.",effect:"Creates a gentle cooling sensation and helps soothe overheated cheeks and mild feverish feelings."},
+{name:"Fairy Blossom Tea",rarity:"Legendary",ingredients:"Fairy blossom petals gathered with permission, chamomile, crystal pollen, and soft honey.",effect:"Encourages deep rest and supports the body's natural recovery after emotionally heavy days."},
+{name:"Blueberry Stardew Tea",rarity:"Rare",ingredients:"Moon blueberries, lavender, oatflower, and warm clover honey.",effect:"Comforts the stomach and softens anxious thoughts. Best brewed on rainy evenings."},
+{name:"Beginner's Blend",rarity:"Common",ingredients:"Mint, chamomile, honey, and one brave little leaf.",effect:"A gentle cup for every traveler taking their first steps. No one leaves the shop empty-handed."}
 ];
 
 const questions=[
-{q:"Which tea helps a bard's tired vocal cords?",correct:"Dragon Berry Tea",options:["Dragon Berry Tea","Frost Fern Tea","Moonlit Lotus Tea","Forest Whisper Tea"]},
-{q:"Which tea opens under moonlight?",correct:"Moonlit Lotus Tea",options:["Fairy Blossom Tea","Beginner's Blend","Moonlit Lotus Tea","Dragon Berry Tea"]},
-{q:"Which ingredient needs permission?",correct:"Fairy blossom petals",options:["Fairy blossom petals","Snow mint","Pine tips","Dragonberries"]},
-{q:"Which cools an overheated traveler?",correct:"Frost Fern Tea",options:["Moonlit Lotus Tea","Frost Fern Tea","Beginner's Blend","Dragon Berry Tea"]},
-{q:"Which grounds travelers?",correct:"Forest Whisper Tea",options:["Forest Whisper Tea","Fairy Blossom Tea","Frost Fern Tea","Beginner's Blend"]}
+{q:"Which tea would help a bard with tired vocal cords?",correct:"Dragon Berry Tea",options:["Dragon Berry Tea","Frost Fern Tea","Moonlit Lotus Tea","Forest Whisper Tea"]},
+{q:"Which tea is brewed with petals that open under moonlight?",correct:"Moonlit Lotus Tea",options:["Fairy Blossom Tea","Beginner's Blend","Moonlit Lotus Tea","Dragon Berry Tea"]},
+{q:"Which ingredient should be gathered with permission?",correct:"Fairy blossom petals",options:["Fairy blossom petals","Snow mint","Pine tips","Dragonberries"]},
+{q:"Which tea would cool an overheated traveler?",correct:"Frost Fern Tea",options:["Moonlit Lotus Tea","Frost Fern Tea","Beginner's Blend","Dragon Berry Tea"]},
+{q:"Which tea helps travelers feel grounded after long walks?",correct:"Forest Whisper Tea",options:["Forest Whisper Tea","Fairy Blossom Tea","Frost Fern Tea","Beginner's Blend"]}
 ];
 
 let qi=0,qs=0,cs=0,time=20,timer,spawner;
@@ -565,15 +498,15 @@ function show(id){
 
 function startQuiz(){
   qi=0;qs=0;
-  $("speech").innerHTML="CHOOSE<br>CAREFULLY";
+  $("speech").textContent="Choose carefully. The teapots are listening.";
   show("quiz");
   nextQ();
 }
 
 function nextQ(){
   let item=questions[qi];
-  $("quizRound").textContent=`Q${qi+1}/${questions.length}`;
-  $("quizScore").textContent=`SCORE:${qs}`;
+  $("quizRound").textContent=`Question ${qi+1}/${questions.length}`;
+  $("quizScore").textContent=`Score: ${qs}`;
   $("question").textContent=item.q;
   $("answers").innerHTML="";
   item.options.forEach(op=>{
@@ -592,7 +525,7 @@ function nextQ(){
 function startCatcher(){
   cs=0;time=20;
   $("catchbox").innerHTML="";
-  $("speech").innerHTML="CATCH GOOD<br>NO FROGS!";
+  $("speech").textContent="Catch the good ingredients. Please do not put frogs in the kettle.";
   show("catcher");
   updateCatch();
   clearInterval(timer);clearInterval(spawner);
@@ -604,8 +537,8 @@ function startCatcher(){
 }
 
 function updateCatch(){
-  $("timeLeft").textContent=`TIME:${time}`;
-  $("catchScore").textContent=`SCORE:${cs}`;
+  $("timeLeft").textContent=`Time: ${time}`;
+  $("catchScore").textContent=`Score: ${cs}`;
 }
 
 function spawn(){
@@ -635,32 +568,32 @@ function brew(won){
   const tea=won?teas[Math.floor(Math.random()*(teas.length-1))]:teas[teas.length-1];
   let saved=JSON.parse(localStorage.getItem("bothinaTeas")||"[]");
   if(!saved.includes(tea.name)){saved.push(tea.name);localStorage.setItem("bothinaTeas",JSON.stringify(saved));}
-  $("speech").innerHTML=won?"YOU WON<br>SPECIAL TEA":"KEEP TRY<br>TEA WAITS";
+  $("speech").textContent=won?"You won. The kettle picked something special for you.":"That's alright. Every tea master starts somewhere.";
   $("reward").innerHTML=`
     <span class="tag">${tea.rarity}</span>
     <div class="teaName">🍵 ${tea.name}</div>
-    <p><b>INGREDIENTS</b><br>${tea.ingredients}</p>
-    <p><b>EFFECT</b><br>${tea.effect}</p>
-    <p><b>JOURNAL</b><br>FOUND: ${saved.length} TEA${saved.length===1?"":"S"}</p>
-    <button onclick="startQuiz()">PLAY QUIZ</button>
-    <button onclick="startCatcher()">PLAY CATCH</button>
+    <p><b>Ingredients</b><br>${tea.ingredients}</p>
+    <p><b>Effect</b><br>${tea.effect}</p>
+    <p><b>Tea Keeper's Journal</b><br>You have collected ${saved.length} tea${saved.length===1?"":"s"} on this device.</p>
+    <button onclick="startQuiz()">Play Guess the Tea</button>
+    <button onclick="startCatcher()">Play Tea Catcher</button>
   `;
   $("reward").classList.remove("hidden");
 }
 
 function dragonTalk(){
-  const lines=["PIP INNOCENT","PIP CRUMBS","PIP DREAMS HONEY","PIP GUARDS"];
+  const lines=["Pip looks innocent. Too innocent.","Pip has crumbs on his face.","Pip is dreaming about ember honey.","Pip quietly guards the teacups."];
   $("speech").textContent=lines[Math.floor(Math.random()*lines.length)];
 }
 
 function journalTalk(){
   let saved=JSON.parse(localStorage.getItem("bothinaTeas")||"[]");
-  $("speech").textContent=saved.length?`JOURNAL: ${saved.length} TEA${saved.length===1?"":"S"}`:"JOURNAL EMPTY";
+  $("speech").textContent=saved.length?`Your journal has ${saved.length} tea${saved.length===1?"":"s"} inside.`:"Your journal is empty for now. Win a game and I'll brew your first tea.";
 }
 
 document.querySelectorAll(".jar").forEach(j=>{
   j.onclick=()=>{
-    const lines=["KETTLE SINGS","PERMISSION ONLY","MUSHROOMS FIGHT","LIKE BERRIES","DRAGON WATCHES"];
+    const lines=["The kettle sings when it's happy.","Fairy blossoms are picked with permission only.","If the shelf rattles, the mushrooms are arguing.","I hope you like berries.","The dragon promised not to steal sugar today."];
     $("speech").textContent=lines[Math.floor(Math.random()*lines.length)];
   };
 });
